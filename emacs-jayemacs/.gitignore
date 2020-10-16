@@ -1,0 +1,13 @@
+backups/
+elpa/
+history/
+recentf
+projectile-bookmarks.eld
+history
+auto-save-list/
+smex-items
+transient/
+.emacs.desktop.lock
+custom.el
+network-security.data
+

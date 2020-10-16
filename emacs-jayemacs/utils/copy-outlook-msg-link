@@ -1,0 +1,8 @@
+#!/usr/bin/osascript
+
+tell application "Microsoft Outlook"
+	set selectedMessages to selected objects
+	set msgId to id of item 1 of selectedMessages
+	set outlookLink to "outlook://" & msgId
+--	set the clipboard to outlookLink 
+end tell
