@@ -1,12 +1,18 @@
-[submodule "emacs-jayemacs/pkgs/use-package"]
+[submodule "use-package"]
 	path = emacs-jayemacs/pkgs/use-package
 	url = git@github.com:jwiegley/use-package.git
-[submodule "emacs-jayemacs/pkgs/diminish"]
-	path = emacs-jayemacs/pkgs/diminish
-	url = git@github.com:myrjola/diminish.el.git
-[submodule "emacs-jayemacs/pkgs/delight"]
+[submodule "delight"]
 	path = emacs-jayemacs/pkgs/delight
 	url = git@github.com:antonio/delight.el.git
-[submodule "popwin"]
-	path = emacs-jayemacs/pkgs/popwin
-	url = git@github.com:m2ym/popwin-el.git
+[submodule "diminish"]
+	path = emacs-jayemacs/pkgs/diminish
+	url = git@github.com:myrjola/diminish.el.git
+[submodule "spacemacs"]
+	path = emacs-spacemacs
+	url = git@github.com:syl20bnr/spacemacs.git
+[submodule "borg"]
+	path = emacs-borg
+	url = git@github.com:emacscollective/emacs.g.git
+[submodule "thebb"]
+	path = emacs-thebb
+	url = git@github.com:TheBB/dotemacs.git
