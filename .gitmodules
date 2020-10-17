@@ -13,6 +13,3 @@
 [submodule "borg"]
 	path = emacs-borg
 	url = git@github.com:emacscollective/emacs.g.git
-[submodule "thebb"]
-	path = emacs-thebb
-	url = git@github.com:TheBB/dotemacs.git
