@@ -27,8 +27,8 @@
       auto-save-file-name-transforms `((".*" ,(concat user-emacs-directory "backups/") t)))
 
 
-(with-eval-after-load 'gnutls
-  (add-to-list 'gnutls-trustfiles "/Users/ajpremkumar/Documents/MacOSCerts/certs.pem"))
+;; (with-eval-after-load 'gnutls
+  ;; (add-to-list 'gnutls-trustfiles "/Users/ajpremkumar/Documents/MacOSCerts/certs.pem"))
 
 ;;; Multi-Emacs config loading
 ;; When running multiple emacs configs put the below section in
@@ -65,6 +65,7 @@
 (setq use-package-always-ensure t)
 (require 'diminish)
 (require 'delight)
+(require 'page-break-lines)
 (use-package which-key)
 (use-package bind-map)
 (require 'jayemacs)
@@ -213,7 +214,9 @@
   :defer t
   :no-require t
   :init
-  (eviljay-init-and-setup-mode 'helpful-mode))
+  (evil-set-initial-state 'helpful-mode 'motion))
+
+  ;; (eviljay-init-and-setup-mode 'helpful-mode))
 
 
 (use-package restart-emacs
@@ -260,6 +263,7 @@
   ;; org templates
   (setq org-capture-templates '(("s" "Insert Solution, Impact, Questions." plain (file "") "%[/Users/ajpremkumar/repo/ajays/org/templates/dc.org]")
                                 ("f" "Follow Up" entry (file+headline "" "Follow Ups") "* TODO %t %?"))))
+
 
 (use-package org-bullets
   :defer t
@@ -367,6 +371,7 @@
   (add-hook 'lispy-mode-hook (lambda ()
                                (define-key lispy-mode-map "\C-S-k" 'lispy-kill))))
 
+(require 'openapi-yaml-mode)
 
 (use-package yaml-mode
   :defer t
@@ -397,8 +402,9 @@
 
 ;; Utilities
 
-(use-package irfc
-  :ensure nil)
+(use-package plantuml-mode
+  :defer t
+  :no-require t)
 
 (use-package ledger-mode
   :defer t
@@ -417,6 +423,14 @@
 ;;         ("gd"  . 'dumb-jump-go))
 ;;   :config
 ;;   (setq dumb-jump-selector 'ivy))
+
+(use-package popwin
+  :config
+  (progn
+    (push '("*Org Agenda*" :position right :width 40 :dedicated t :stick t) popwin:special-display-config)
+    (push '("*xref*" :position bottom :height 14 :stick t) popwin:special-display-config)))
+  
+
 
 (use-package nix-mode
   :defer t
@@ -611,6 +625,11 @@
   (line-number-mode +1)
   (ace-link-setup-default)
   (show-paren-mode +1)
+  (global-page-break-lines-mode)
+  ;; (popwin-mode 1)
+  ;; (push '("*Process List*" :position bottom) popwin:special-display-config)
+  ;; (push '(dired-mode :position bottom) popwin:special-display-config)
+
   ;; (savehist-mode +1)
   ;; paredit
   (add-hook 'prog-mode-hook '(lambda ()
@@ -625,11 +644,13 @@
   (diminish 'undo-tree-mode)
   (diminish 'ivy-mode)
   (diminish 'company-mode)
+  (diminish 'eldoc-mode)
+  (diminish 'page-break-lines-mode)
 
   ;; Other initial states
 
   (eviljay-init-and-setup-modes
-   'helpful-mode
+   ;; 'helpful-mode
    'xref--xref-buffer-mode
    'magit-status-mode
    'magit-submodule-list-mode
@@ -649,6 +670,8 @@
 
 ;; (defconst emacs-load-time (- (current-time) emacs-start-time))
 (message "Jayemacs loaded in %s" (emacs-init-time))
+
+
 (run-with-idle-timer 2 nil #'garbage-collect)
 
 ;; Local Variables;

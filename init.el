@@ -5,5 +5,7 @@
 ;; Choose the emacs you wish to run!!
 
 ;;; Code:
-                    
-(load-file (concat user-emacs-directory "init.el"))
+
+(and (boundp 'user-emacs-directory)
+     (load-file (concat user-emacs-directory "init.el")))
+

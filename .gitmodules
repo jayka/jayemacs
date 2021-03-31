@@ -13,3 +13,6 @@
 [submodule "borg"]
 	path = emacs-borg
 	url = git@github.com:emacscollective/emacs.g.git
+[submodule "page-break-lines"]
+	path = emacs-jayemacs/pkgs/page-break-lines
+	url = git@github.com:purcell/page-break-lines.git
