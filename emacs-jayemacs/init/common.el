@@ -155,7 +155,7 @@
   (use-package ace-window)
   (aw-switch-to-window (nth (- (elt (this-command-keys-vector) (- (length (this-command-keys-vector)) 1)) 49) (aw-window-list))))
 
-(require 'hydra)
+;; (require 'hydra)
 
 ;; (defhydra j/hydra-switch-buffer-menu ()
 ;;   "switch buffer"

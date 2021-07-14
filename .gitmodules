@@ -19,3 +19,9 @@
 [submodule "emacs-doomemacs"]
 	path = emacs-doomemacs
 	url = git@github.com:hlissner/doom-emacs.git
+[submodule "emacs-jayemacs/pkgs/page-break-lines"]
+	path = emacs-jayemacs/pkgs/page-break-lines
+	url = git@github.com:purcell/page-break-lines.git
+[submodule "emacs-jayemacs/pkgs/parinfer"]
+	path = emacs-jayemacs/pkgs/parinfer
+	url = git@github.com:DogLooksGood/parinfer-mode.git
