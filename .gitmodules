@@ -10,9 +10,12 @@
 [submodule "spacemacs"]
 	path = emacs-spacemacs
 	url = git@github.com:syl20bnr/spacemacs.git
-[submodule "borg"]
-	path = emacs-borg
-	url = git@github.com:emacscollective/emacs.g.git
 [submodule "page-break-lines"]
 	path = emacs-jayemacs/pkgs/page-break-lines
 	url = git@github.com:purcell/page-break-lines.git
+[submodule "parinfer"]
+	path = emacs-jayemacs/pkgs/parinfer
+	url = git@github.com:DogLooksGood/parinfer-mode.git
+[submodule "emacs-doomemacs"]
+	path = emacs-doomemacs
+	url = git@github.com:hlissner/doom-emacs.git

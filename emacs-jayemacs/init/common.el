@@ -156,20 +156,6 @@
   (aw-switch-to-window (nth (- (elt (this-command-keys-vector) (- (length (this-command-keys-vector)) 1)) 49) (aw-window-list))))
 
 (require 'hydra)
-(defhydra j/hydra-window-adjust-menu ()
-  "window adjust"
-  (">" (evil-window-increase-width 1) "increase width")
-  ("<" (evil-window-decrease-width 1) "decrease width")
-  ("+" (evil-window-increase-height 1) "increase height")
-  ("-" (evil-window-decrease-height 1) "decrease height")
-  ("l" windmove-right "right window")
-  ("h" windmove-left "left window")
-  ("k" windmove-up "up window")
-  ("j" windmove-down "down window")
-  ("d" delete-window "delete current window")
-  ("b" balance-windows "balance all windows")
-  ("q" nil "quit"))
-
 
 ;; (defhydra j/hydra-switch-buffer-menu ()
 ;;   "switch buffer"

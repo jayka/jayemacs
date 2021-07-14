@@ -2,7 +2,8 @@
 ;; Settings
 (j/csetv ;package-enable-at-startup nil
  inhibit-startup-screen t
- ring-bell-function nil ; no ding sound
+ ring-bell-function (lambda() (invert-face 'mode-line) (run-with-timer 0.1 nil #'invert-face 'mode-line)) ; no ding sound. only flash mode-line
+ visible-bell nil
  ;; indent uses spaces to tabs
  indent-tabs-mode nil
  tool-bar-mode nil

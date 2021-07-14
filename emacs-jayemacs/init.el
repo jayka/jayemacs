@@ -182,6 +182,24 @@
 (use-package swiper
   :defer t
   :no-require t)
+(use-package hydra
+  :defer t
+  :no-require t
+  :config
+  (defhydra j/hydra-window-adjust-menu ()
+    "window adjust"
+    (">" (evil-window-increase-width 1) "increase width")
+    ("<" (evil-window-decrease-width 1) "decrease width")
+    ("+" (evil-window-increase-height 1) "increase height")
+    ("-" (evil-window-decrease-height 1) "decrease height")
+    ("l" windmove-right "right window")
+    ("h" windmove-left "left window")
+    ("k" windmove-up "up window")
+    ("j" windmove-down "down window")
+    ("d" delete-window "delete current window")
+    ("b" balance-windows "balance all windows")
+    ("q" nil "quit")))
+
 (use-package ace-window
   :no-require t
   :config
@@ -203,9 +221,11 @@
   :config
   (add-hook 'treemacs-mode-hook
             (lambda ()
-              (setq mode-line-format nil) ; remove mode line
-              (linum-mode 0)  ; disable line numbers
-              (fringe-mode 0)  ; no fringes
+              (setq mode-line-format nil)
+              ;; (setq treemacs--width-is-locked nil)
+                    ;; treemacs-icon-root "") ; remove mode line
+              ;;(linum-mode 0)  ; disable line numbers
+              ;;(fringe-mode 0)  ; no fringes
               (use-package treemacs-evil)
               (use-package treemacs-projectile))))
 
@@ -371,7 +391,7 @@
   (add-hook 'lispy-mode-hook (lambda ()
                                (define-key lispy-mode-map "\C-S-k" 'lispy-kill))))
 
-(require 'openapi-yaml-mode)
+;;(require 'openapi-yaml-mode)
 
 (use-package yaml-mode
   :defer t
@@ -383,8 +403,7 @@
   :no-require t)
 
 (use-package parinfer
-  :defer t
-  :no-require t
+  :load-path "pkgs/parinfer"
   :init
   (setq parinfer-extensions
         '(defaults
@@ -401,6 +420,12 @@
   (add-hook 'prog-mode-hook (lambda() (origami-mode 1))))
 
 ;; Utilities
+
+(use-package all-the-icons)
+
+(use-package undo-tree
+  :defer t
+  :no-require t)
 
 (use-package plantuml-mode
   :defer t
@@ -453,6 +478,8 @@
 (bind-key "T" 'which-key-show-top-level help-map)
 
 (bind-key "M-x" 'counsel-M-x)
+
+(bind-key "M-`" 'other-frame)
 
 ;; Prefix keys
 
@@ -589,7 +616,7 @@
 (add-hook 'after-init-hook
           (lambda()
             (progn
-              (let ((themes '(gruvbox-theme color-theme-sanityinc-tomorrow)))
+              (let ((themes '(gruvbox-theme color-theme-sanityinc-tomorrow kaolin-themes)))
                 (dolist (theme themes)
                   ;;(message "installing theme: %s" theme)
                   (eval `(use-package ,theme :defer t))))
@@ -597,6 +624,8 @@
               ;; Activate theme
               (load-theme 'sanityinc-tomorrow-night t)
               ;; (load-theme 'gruvbox-dark-medium t)
+                ;; (load-theme 'kaolin-dark t)
+              (kaolin-treemacs-theme)
               ;; UI Setup
               ;; set a normal readable font size
               (set-face-attribute 'default nil :font "Hack Nerd Font" :weight 'normal :height 120))))
@@ -626,6 +655,8 @@
   (ace-link-setup-default)
   (show-paren-mode +1)
   (global-page-break-lines-mode)
+  (global-flycheck-mode)
+  ;; (treemacs)
   ;; (popwin-mode 1)
   ;; (push '("*Process List*" :position bottom) popwin:special-display-config)
   ;; (push '(dired-mode :position bottom) popwin:special-display-config)
