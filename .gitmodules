@@ -7,21 +7,21 @@
 [submodule "diminish"]
 	path = emacs-jayemacs/pkgs/diminish
 	url = https://github.com/myrjola/diminish.el.git
-[submodule "spacemacs"]
-	path = emacs-spacemacs
-	url = https://github.com/syl20bnr/spacemacs.git
 [submodule "page-break-lines"]
 	path = emacs-jayemacs/pkgs/page-break-lines
 	url = https://github.com/purcell/page-break-lines.git
 [submodule "parinfer"]
 	path = emacs-jayemacs/pkgs/parinfer
 	url = https://github.com/DogLooksGood/parinfer-mode.git
-[submodule "emacs-doomemacs"]
-	path = emacs-doomemacs
-	url = https://github.com/hlissner/doom-emacs.git
 [submodule "emacs-jayemacs/pkgs/page-break-lines"]
 	path = emacs-jayemacs/pkgs/page-break-lines
 	url = https://github.com/purcell/page-break-lines.git
 [submodule "emacs-jayemacs/pkgs/parinfer"]
 	path = emacs-jayemacs/pkgs/parinfer
 	url = https://github.com/DogLooksGood/parinfer-mode.git
+[submodule "emacs-doomemacs"]
+	path = emacs-doomemacs
+	url = https://github.com/doomemacs/doomemacs.git
+[submodule "emacs-spacemacs"]
+	path = emacs-spacemacs
+	url = https://github.com/syl20bnr/spacemacs.git
