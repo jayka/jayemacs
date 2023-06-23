@@ -1,27 +1,27 @@
 [submodule "use-package"]
 	path = emacs-jayemacs/pkgs/use-package
-	url = git@github.com:jwiegley/use-package.git
+	url = https://github.com/jwiegley/use-package.git
 [submodule "delight"]
 	path = emacs-jayemacs/pkgs/delight
-	url = git@github.com:antonio/delight.el.git
+	url = https://github.com/antonio/delight.el.git
 [submodule "diminish"]
 	path = emacs-jayemacs/pkgs/diminish
-	url = git@github.com:myrjola/diminish.el.git
+	url = https://github.com/myrjola/diminish.el.git
 [submodule "spacemacs"]
 	path = emacs-spacemacs
-	url = git@github.com:syl20bnr/spacemacs.git
+	url = https://github.com/syl20bnr/spacemacs.git
 [submodule "page-break-lines"]
 	path = emacs-jayemacs/pkgs/page-break-lines
-	url = git@github.com:purcell/page-break-lines.git
+	url = https://github.com/purcell/page-break-lines.git
 [submodule "parinfer"]
 	path = emacs-jayemacs/pkgs/parinfer
-	url = git@github.com:DogLooksGood/parinfer-mode.git
+	url = https://github.com/DogLooksGood/parinfer-mode.git
 [submodule "emacs-doomemacs"]
 	path = emacs-doomemacs
-	url = git@github.com:hlissner/doom-emacs.git
+	url = https://github.com/hlissner/doom-emacs.git
 [submodule "emacs-jayemacs/pkgs/page-break-lines"]
 	path = emacs-jayemacs/pkgs/page-break-lines
-	url = git@github.com:purcell/page-break-lines.git
+	url = https://github.com/purcell/page-break-lines.git
 [submodule "emacs-jayemacs/pkgs/parinfer"]
 	path = emacs-jayemacs/pkgs/parinfer
-	url = git@github.com:DogLooksGood/parinfer-mode.git
+	url = https://github.com/DogLooksGood/parinfer-mode.git
