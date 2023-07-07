@@ -91,6 +91,10 @@
   (interactive)
   (find-file (concat user-emacs-directory "init.el")))
 
+(defun j/open-bash-profile-rc ()
+  (interactive)
+  (find-file "~/.bashrc"))
+
 (defun j/open-init-dir ()
   (interactive)
   (counsel-find-file (concat user-emacs-directory "init/")))

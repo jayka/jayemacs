@@ -52,9 +52,24 @@
 
 (message "%s" user-init-file)
 (message "%s" load-path)
+
+
 ;; One less file to load at startup
 (setq site-run-file nil)
 
+;; load appropriate file
+(message "loading %s" current-emacs-file)
+
+(setq load-file-name (concat user-emacs-directory "early-init.el"))
+(and (file-exists-p (concat user-emacs-directory "early-init.el"))
+     (with-temp-buffer
+       (insert-file-contents (concat user-emacs-directory "early-init.el"))
+       (eval-buffer)))
+
+;;(load (concat user-emacs-directory "/early-init.el"))
+
+;;(and (file-exists-p (concat user-emacs-directory "/early-init.el"))
+;;     (load (concat user-emacs-directory "/early-init.el")))
 ;; (defun switch-emacs (emacs-to-switch)
 ;;   (interactive
 ;;    (list (directory-files user-main-emacs-directory nil "^emacs-")

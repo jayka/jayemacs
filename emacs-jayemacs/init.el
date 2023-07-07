@@ -53,6 +53,10 @@
                          ("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")))
 
+
+;; add svg to image types
+(add-to-list 'image-types 'svg)
+
 (package-initialize)
 
 
@@ -154,6 +158,12 @@
   :init
   (j/csetv ivy-use-virtual-buffers t
            ivy-modified-buffer t)
+  :config
+  (use-package ivy-rich
+    :config
+    (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+    (setq ivy-rich-path-style 'abbrev)
+    (ivy-rich-mode 1))
   :bind
   (:map ivy-minibuffer-map
         ("C-j" . 'ivy-next-line)
@@ -215,6 +225,11 @@
   (setq expand-region-contract-fast-key "V"
         expand-region-reset-fast-key "r"))
 
+(use-package all-the-icons
+  :config
+  (setq all-the-icons-color-icons t))
+
+
 (use-package treemacs
   :defer t
   :no-require t
@@ -227,7 +242,11 @@
               ;;(linum-mode 0)  ; disable line numbers
               ;;(fringe-mode 0)  ; no fringes
               (use-package treemacs-evil)
-              (use-package treemacs-projectile))))
+              (use-package treemacs-projectile)
+              (use-package treemacs-all-the-icons
+                :ensure all-the-icons
+                :config
+                (treemacs-load-theme 'all-the-icons)))))
 
 
 (use-package helpful
@@ -346,17 +365,17 @@
   (eviljay-init-and-setup-modes
    'cider-stacktrace-mode))
 
-(use-package go-mode
-  :defer t
-  :no-require t
-  :init
-  (use-package company-go)
-  (use-package go-imports)
-  (use-package go-playground)
-  (use-package go-playground-cli)
-  (use-package go-projectile)
-  (use-package go-scratch)
-  (use-package go-rename))
+;; (use-package go-mode
+;;   :defer t
+;;   :no-require t
+;;   :init
+;;   (use-package company-go)
+;;   (use-package go-imports)
+;;   (use-package go-playground)
+;;   (use-package go-playground-cli)
+;;   (use-package go-projectile)
+;;   (use-package go-scratch)
+;;   (use-package go-rename))
 
 (use-package rust-mode
   :defer t)
@@ -379,11 +398,11 @@
 (use-package js2-mode
   :defer t
   :no-require t)
-(use-package fish-mode
-  :defer t
-  :no-require t
-  :config
-  (setq fish-indent-offset 2))
+;; (use-package fish-mode
+;;   :defer t
+;;   :no-require t
+;;   :config
+;;   (setq fish-indent-offset 2))
 (use-package lispy
   :defer t
   :no-require t
@@ -413,15 +432,14 @@
   :config
   (parinfer--switch-to-paren-mode))
 
-(use-package origami
-  :no-require t
-  :init
-  (add-hook 'json-mode-hook (lambda() (origami-mode 1)))
-  (add-hook 'prog-mode-hook (lambda() (origami-mode 1))))
+;; (use-package origami
+;;   :no-require t
+;;   :init
+;;   (add-hook 'json-mode-hook (lambda() (origami-mode 1)))
+;;   (add-hook 'prog-mode-hook (lambda() (origami-mode 1))))
 
 ;; Utilities
 
-(use-package all-the-icons)
 
 (use-package undo-tree
   :defer t
@@ -455,7 +473,7 @@
     (push '("*Org Agenda*" :position right :width 40 :dedicated t :stick t) popwin:special-display-config)
     (push '("*xref*" :position bottom :height 14 :stick t) popwin:special-display-config)))
   
-
+;; (use-package info-mode)
 
 (use-package nix-mode
   :defer t
@@ -514,6 +532,7 @@
             ("fr" . 'counsel-recentf)
             ("fii" . 'j/open-init-file)
             ("fid" . 'j/open-init-dir)
+            ("fip" . 'j/open-bash-profile-rc)
             ("fs" . 'save-buffer)
             ("fS" . 'write-file)
             ("fR" . 'rename-file)
@@ -604,6 +623,7 @@
             ("qr" . 'j/restart)
             ("qi" . 'j/restart-no-init)
             ("qR" . 'j/restart-save-desktop)
+            ("qs" . 'switch-emacs)
             ;; Toggle
             ("tf" . 'j/flycheck-toggle)
             ("tp" . 'paredit-mode)
@@ -616,16 +636,34 @@
 (add-hook 'after-init-hook
           (lambda()
             (progn
-              (let ((themes '(gruvbox-theme color-theme-sanityinc-tomorrow kaolin-themes)))
+              (let ((themes '(gruvbox-theme color-theme-sanityinc-tomorrow kaolin-themes zenburn-theme moe-theme)))
                 (dolist (theme themes)
                   ;;(message "installing theme: %s" theme)
                   (eval `(use-package ,theme :defer t))))
 
+              
+              ;; (use-package telephone-line
+              ;;   :after (moe-theme)
+              ;;   :config
+              ;;   (telephone-line-mode +1))
+
+              (use-package moe-theme
+                :config
+                (load-theme 'moe-dark t))
+                
+              ;; (use-package powerline
+              ;;   :init
+              ;;   (use-package powerline-evil)
+              ;;   :after (moe-theme)
+              ;;   :config
+              ;;   ;;'sanityinc-tomorrow-night t
+              ;;   (powerline-default-theme)
+              ;;   (powerline-moe-theme))
+              
               ;; Activate theme
-              (load-theme 'sanityinc-tomorrow-night t)
               ;; (load-theme 'gruvbox-dark-medium t)
                 ;; (load-theme 'kaolin-dark t)
-              (kaolin-treemacs-theme)
+              ;; (kaolin-treemacs-theme)
               ;; UI Setup
               ;; set a normal readable font size
               (set-face-attribute 'default nil :font "Hack Nerd Font" :weight 'normal :height 120))))
@@ -636,6 +674,8 @@
 
 (progn
   (desktop-save-mode +1)
+  (set-fringe-style 1)
+  (global-hl-line-mode +1)
   (minibuffer-depth-indicate-mode +1)
   (blink-cursor-mode -1)
   (evil-mode +1)
@@ -663,7 +703,7 @@
 
   ;; (savehist-mode +1)
   ;; paredit
-  (add-hook 'prog-mode-hook '(lambda ()
+  (add-hook 'prog-mode-hook #'(lambda ()
                                ;; (lispy-mode +1)
                                (rainbow-delimiters-mode-enable)
                                (prettify-symbols-mode +1)
@@ -694,7 +734,8 @@
    'magit-reflog-mode
    'magit-log-select-mode
    'magit-revision-mode
-   'help-mode
+   ;; 'help-mode
+   'Info-mode
    'package-menu-mode
    'Custom-mode))
 

@@ -25,3 +25,6 @@
 [submodule "emacs-spacemacs"]
 	path = emacs-spacemacs
 	url = https://github.com/syl20bnr/spacemacs.git
+[submodule "emacs-prelude"]
+	path = emacs-prelude
+	url = https://github.com/bbatsov/prelude.git

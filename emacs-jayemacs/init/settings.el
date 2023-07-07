@@ -12,17 +12,17 @@
  tab-width 2
  js-indent-level 2
  scroll-step 1
- enable-recursive-minibuffers t
+ enable-recursive-minibuffers nil
  eval-expression-print-length nil
  eval-expression-print-level nil
  disabled-command-function nil
  left-fringe-width 4
- load-prefer-newer t)
+ load-prefer-newer t
+ linum-format "%3d ")
 
 ;; start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (fset 'yes-or-no-p 'y-or-n-p)
-
 ;; save minibuffer history
 (savehist-mode 1)
 

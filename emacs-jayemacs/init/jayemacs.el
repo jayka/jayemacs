@@ -76,8 +76,8 @@
                   (define-key evil-eviljay-state-local-map-tmp "\C-d" 'evil-scroll-down)
                   (define-key evil-eviljay-state-local-map-tmp "\C-u" 'evil-scroll-up)
                   ;; (message "After: %s" evil-eviljay-state-local-map)
-                  (setq evil-eviljay-state-local-map (make-composed-keymap (list evil-eviljay-state-local-map-tmp evil-motion-state-map))))))))
-                  ;; (message "Before: %s" evil-eviljay-state-local-map))))))
+                  (setq evil-eviljay-state-local-map (make-composed-keymap (list evil-eviljay-state-local-map-tmp evil-motion-state-map)))
+                  (message "Before: %s" evil-eviljay-state-local-map))))))
 
 
 
