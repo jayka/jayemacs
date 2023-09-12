@@ -666,7 +666,7 @@
               ;; (kaolin-treemacs-theme)
               ;; UI Setup
               ;; set a normal readable font size
-              (set-face-attribute 'default nil :font "Hack Nerd Font" :weight 'normal :height 120))))
+              (set-face-attribute 'default nil :font "Hack Nerd Font" :weight 'normal :height 140))))
               ;; (custom-theme-set-faces 'sanityinc-tomorrow-night ((t (:background ))))
 
 
@@ -733,11 +733,11 @@
    'magit-cherry-mode
    'magit-reflog-mode
    'magit-log-select-mode
-   'magit-revision-mode
+   'magit-revision-mode))
    ;; 'help-mode
-   'Info-mode
-   'package-menu-mode
-   'Custom-mode))
+   ;; 'Info-mode
+   ;; 'package-menu-mode
+   ;; 'Custom-mode))
 
 
 ;; (defconst emacs-load-time (- (current-time) emacs-start-time))
