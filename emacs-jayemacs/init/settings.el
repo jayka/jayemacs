@@ -18,7 +18,8 @@
  disabled-command-function nil
  left-fringe-width 4
  load-prefer-newer t
- linum-format "%3d ")
+ linum-format "%3d "
+ enable-local-variables nil)
 
 ;; start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))

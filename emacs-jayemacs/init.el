@@ -380,17 +380,18 @@
 (use-package rust-mode
   :defer t)
 
-(use-package lsp-mode
-  :hook (
-         (rust-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp
-  :init
-  (use-package lsp-ui :commands lsp-ui-mode)
-  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-  (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-  (use-package dap-mode))
+;; (use-package lsp-mode
+;;   :hook (
+;;          (rust-mode . lsp)
+;;          (lsp-mode . lsp-enable-which-key-integration))
+;;   :commands lsp
+;;   :init
+;;   (use-package lsp-ui :commands lsp-ui-mode)
+;;   (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+;;   (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+;;   (use-package dap-mode))
   
+(use-package eglot)
 
 (use-package json-mode
   :defer t
